@@ -1,0 +1,616 @@
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+#:import webbrowser webbrowser
+#:import MeshLinePlot kivy.garden.graph.MeshLinePlot
+#:import C kivy.utils.get_color_from_hex
+
+
+<Button>:
+    font_size: 24
+    halign: 'center'
+    valign: 'center'
+    markup: True
+    
+MyScreenManager:
+    transition: FadeTransition()
+    FirstScreen:
+    Logic:
+    ThirdScreen:
+    FourthScreen:
+
+<FirstScreen>:
+    name: 'first'
+    BoxLayout:
+        orientation: 'vertical'
+        
+        
+        GridLayout:
+            cols: 3
+            spacing: '8dp'
+            size_hint_y: None
+            
+            size_hint: [1, .2]
+            orientation: "horizontal"
+            Label:
+                text: '' 
+            Label:
+                text: ''
+            Label:
+                text: ''
+            
+        
+        Image:
+            source: 'Developer\Heracleia\logo.png'
+            allow_stretch: False
+            keep_ratio: True
+
+           
+
+        GridLayout:
+            cols: 3
+            spacing: '8dp'
+            size_hint_y: None
+            
+            size_hint: [1, .2]
+            orientation: "horizontal"
+
+            
+            Label:
+                text: '' 
+            Button:
+                text: 'Website'
+                font_size: 30
+                on_release: webbrowser.open('https://dvester.com/heracleia/index.html')
+                
+            Label:
+                text: ''
+        
+        GridLayout:
+            cols: 3
+            spacing: '8dp'
+            size_hint_y: None
+            
+            size_hint: [1, .2]
+            orientation: "horizontal"
+
+            
+            Label:
+                text: '' 
+            Button:
+                text: 'Microphone'
+                font_size: 30
+                on_release: app.root.current = 'second'
+                
+            Label:
+                text: ''
+
+        GridLayout:
+            cols: 3
+            spacing: '8dp'
+            size_hint_y: None
+            
+            size_hint: [1, .2]
+            orientation: "horizontal"
+
+            
+            Label:
+                text: '' 
+            Button:
+                text: 'COPD'
+                font_size: 30
+                on_release: app.root.current = 'second'
+                
+            Label:
+                text: ''
+            
+        GridLayout:
+            cols: 1
+            spacing: '8dp'
+            size_hint_y: None
+            
+            size_hint: [1, .2]
+            orientation: "horizontal"
+
+<Logic>:
+    name: 'second'
+   
+    BoxLayout:
+        BoxLayout:
+            orientation: "vertical"
+            GridLayout:
+                cols: 10
+                spacing: '8dp'
+                size_hint_y: None
+                
+                size_hint: [1, .07]
+
+                Button:
+                    text: ('Menu')
+                    bold: True
+                    on_release: app.root.current = 'first'
+                Button:
+                    text: ('Tests')
+                    bold: True
+                    on_release: app.root.current = 'third'
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+            
+            GridLayout:
+                cols: 10
+                spacing: '8dp'
+                size_hint_y: None
+                
+                
+                Label:
+                    text: ''
+                
+            GridLayout:
+
+                cols: 7
+                spacing: '8dp'
+                size_hint_y: None
+                height: self.minimum_height
+
+                Label:
+                    text: ''
+                Label:
+                    text: ''    
+                        
+
+                ToggleButton:
+                    size_hint_y: None
+                    height: '48dp'
+                    text: 'ECG'
+                    group: 'g1'
+
+                ToggleButton:
+                    size_hint_y: None
+                    height: '48dp'
+                    text: 'EDA'
+                    group: 'g1'
+
+                ToggleButton:
+                    size_hint_y: None
+                    height: '48dp'
+                    text: 'SpO2'
+                    group: 'g1'
+                Label:
+                    text: ''
+                Label:
+                    text: '' 
+
+
+
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+
+                ToggleButton:
+                    size_hint_y: None
+                    height: '48dp'
+                    text: 'Dyspnea'
+                    group: 'g2'
+
+                ToggleButton:
+                    size_hint_y: None
+                    height: '48dp'
+                    text: 'Cognitive Fatigue'
+                    group: 'g3'
+
+                ToggleButton:
+                    size_hint_y: None
+                    height: '48dp'
+                    text: 'Physical Fatigue'
+                    group: 'g4'
+
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+            BoxLayout:
+                size_hint: [1, .8]
+                Graph:
+                    label_options: {'color': (0,0,1,0)}
+                    id: graph
+                    xlabel: "Time (s)"
+                    ylabel: "Level (db)"
+                    plot: MeshLinePlot
+                    x_ticks_minor:5
+                    x_tics_major:25
+                    y_ticks_major:500
+                    y_grid_label:True
+                    x_grid_label:True
+                    padding:5
+                    x_grid:True
+                    y_grid:True
+                    xmin:-0
+                    xmax:100
+                    ymin:0
+                    ymax:2000
+                    pos: 0, root.height / 6
+                    size: root.width * 2 / 3 , root.height * 18 / 24
+
+
+
+            GridLayout:
+                cols: 3
+                
+                size_hint: [1, .05]
+                orientation: "vertical"
+
+                Label:
+                    text: ''
+                Slider:
+                    id: slider
+                    min: 0
+                    max: 100
+                    step: 1
+                    orientation: 'horizontal'
+
+                Label:
+                    text: str(slider.value)
+            GridLayout:
+                cols: 10
+                spacing: '8dp'
+                size_hint_y: None
+                
+                size_hint: [1, .07]
+                
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+
+            GridLayout:
+                cols: 7
+                spacing: '8dp'
+                size_hint_y: None
+                
+                size_hint: [1, .2]
+                orientation: "horizontal"
+
+                Label:
+                    text: ''
+                Label:
+                    text: '' 
+                Button:
+                    text: ('Start')
+                    bold: True
+                    on_press: root.start()
+                
+                Label:
+                    text: ''
+                Button:
+                    text: ('Stop')
+                    bold: True
+                    on_press: root.stop() 
+
+                Label:
+                    text: ''
+                Label:
+                    text: ('')
+
+            GridLayout:
+                cols: 10
+                spacing: '8dp'
+                size_hint_y: None
+                
+                size_hint: [1, .07]
+                
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+
+            GridLayout:
+                cols: 10
+                spacing: '8dp'
+                size_hint_y: None
+                
+                size_hint: [1, .07]
+
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                    
+<ThirdScreen>:
+    name: 'third'
+    BoxLayout:
+        orientation: 'horizontal'
+        
+        
+
+        BoxLayout:
+            orientation: "vertical"
+
+
+            GridLayout:
+                cols: 10
+                spacing: '8dp'
+                size_hint_y: None
+                
+                size_hint: [1, .07]
+
+                Button:
+                    text: ('Menu')
+                    bold: True
+                    on_release: app.root.current = 'first'
+                Button:
+                    text: ('Tests')
+                    bold: True
+                    on_release: app.root.current = 'third'
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+
+            Label:
+                text: 'Test Bank'
+                 
+                font_size: 30
+            
+            GridLayout:
+                cols: 7
+                spacing: '8dp'
+                size_hint_y: None
+                
+                size_hint: [1, .2]
+                orientation: "horizontal"
+
+                Label:
+                    text: ''
+                
+                Label:
+                    text: '1' 
+                Label:
+                    text: '12-21-2020-sample-1.mp3' 
+                Label:
+                    text: ''
+                Button:
+                    text: 'Play'
+                Button:
+                    text: 'Rename'
+                Button:
+                    text: 'Delete'
+
+            GridLayout:
+                cols: 7
+                spacing: '8dp'
+                size_hint_y: None
+                
+                size_hint: [1, .2]
+                orientation: "horizontal"
+
+                Label:
+                    text: ''
+                
+                Label:
+                    text: '2' 
+                Label:
+                    text: '12-21-2020-sample-2.mp3' 
+                Label:
+                    text: ''
+                Button:
+                    text: 'Play'
+                Button:
+                    text: 'Rename'
+                Button:
+                    text: 'Delete'
+
+            GridLayout:
+                cols: 7
+                spacing: '8dp'
+                size_hint_y: None
+                
+                size_hint: [1, .2]
+                orientation: "horizontal"
+
+                Label:
+                    text: ''
+                
+                Label:
+                    text: '3' 
+                Label:
+                    text: '12-21-2020-sample-3.mp3' 
+                Label:
+                    text: ''
+                Button:
+                    text: 'Play'
+                Button:
+                    text: 'Rename'
+                Button:
+                    text: 'Delete'
+
+            GridLayout:
+                cols: 7
+                spacing: '8dp'
+                size_hint_y: None
+                
+                size_hint: [1, .2]
+                orientation: "horizontal"
+
+                Label:
+                    text: ''
+                
+                Label:
+                    text: '4' 
+                Label:
+                    text: '12-21-2020-sample-4.mp3' 
+                Label:
+                    text: ''
+                Button:
+                    text: 'Play'
+                Button:
+                    text: 'Rename'
+                Button:
+                    text: 'Delete'
+
+            GridLayout:
+                cols: 7
+                spacing: '8dp'
+                size_hint_y: None
+                
+                size_hint: [1, .2]
+                orientation: "horizontal"
+
+                Label:
+                    text: ''
+                
+                Label:
+                    text: '5' 
+                Label:
+                    text: '12-21-2020-sample-5.mp3' 
+                Label:
+                    text: ''
+                Button:
+                    text: 'Play'
+                Button:
+                    text: 'Rename'
+                Button:
+                    text: 'Delete'
+
+            GridLayout:
+                cols: 7
+                spacing: '8dp'
+                size_hint_y: None
+                
+                size_hint: [1, .2]
+                orientation: "horizontal"
+
+                Label:
+                    text: ''
+                
+                Label:
+                    text: '6' 
+                Label:
+                    text: '12-21-2020-sample-6.mp3' 
+                Label:
+                    text: ''
+                Button:
+                    text: 'Play'
+                Button:
+                    text: 'Rename'
+                Button:
+                    text: 'Delete'
+
+            GridLayout:
+                cols: 10
+                spacing: '8dp'
+                size_hint_y: None
+                
+                size_hint: [1, .07]
+
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''
+                Label:
+                    text: ''        
+
+<FourthScreen>:
+    name: 'fourth'
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'COPD'
+             
+            font_size: 30
+        Image:
+            source: 'colours2.png'
+            allow_stretch: True
+            keep_ratio: False
+        BoxLayout:
+            Button:
+                text: 'Menu'
+                font_size: 30
+                on_release: app.root.current = 'first'
+            

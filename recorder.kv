@@ -1,0 +1,154 @@
+#:import C kivy.utils.get_color_from_hex
+
+#color wheel
+# off-white: #e8ebee
+# grey: #cbd1d8
+# blue: #27dfd1
+# white: #ffffff
+
+
+<GridLayout>:
+    cols: 3
+    
+    spacing: 10
+    row_default_height:
+        (0.35 * (self.width - self.spacing[0]) -
+        self.padding[0])
+    row_force_default: True
+
+<Button>:
+    background_normal: 'button_normal.png'
+    background_down: 'button_down.png'
+    font_size: 24
+    halign: 'center'
+    markup: True
+
+GridLayout:
+    background_color: C('#e8ebee')
+    padding: 15
+    cols_minimum: {0: 50, 1: 500, 2: 50}
+
+    GridLayout:
+
+        cols: 3
+        Button:
+            background_color: C('#3498db')
+            text:
+                ('[font=Modern Pictograms][size=120]'
+                'h[/size][/font]\nNew')
+
+        
+
+        Button:
+            background_color: C('#95a5a6')
+            text: '[font=Modern Pictograms][size=120]e[/size][/font]\nEdit'
+
+        Button:
+            background_color: C('#e74c3c')
+            text: '[font=Modern Pictograms][size=120]X[/size][/font]\nDelete'
+    GridLayout:
+        cols: 1
+        Image:
+            source: '1.png'
+            size: self.texture_size
+
+        Image:
+            source: '2.png'
+            size: self.texture_size
+
+        Image:
+            source: '3.png'
+            size: self.texture_size
+
+
+
+    
+
+
+    GridLayout:
+        cols: 3
+        row_default_height: 10
+        cols_minimum: {0: 200, 1: 300, 2: 100}
+        Button:
+            background_color: C('#cbd1d8')
+            text: '[size=40][/font]'
+        Button:
+            background_color: C('#8E44AD')
+            text: '[size=40][/font]ECG'
+        Button:
+        
+
+        Button:
+            background_color: C('#cbd1d8')
+            text: '[size=40][/font]'
+        Button:
+            background_color: C('#8E44AD')
+            text: '[size=40][/font]EDA'
+        Button:
+            
+        
+        
+        Button:
+            background_color: C('#27dfd1')
+            text: '[size=40][/font]'
+        Button:
+            background_color: C('#8E44AD')
+            text: '[size=40][/font]SPo2'
+        Button:
+
+
+        Button:
+            background_color: C('#27dfd1')
+            text: '[size=40][/font]'
+        Button:
+            background_color: C('##2E4053')
+            text: '[size=40][/font]Dyspnea'
+        Button:
+        
+        Button:
+            background_color: C('#cbd1d8')
+            text: '[size=40][/font]'
+        Button:
+            background_color: C('#2E4053')
+            text: '[size=40][/font]Cognitive Fatigue'
+        Button:
+
+        Button:
+            background_color: C('#cbd1d8')
+            text: '[size=40][/font]'
+        Button:
+            background_color: C('#2E4053')
+            text: ' [size=40][/font]Physical Fatigue'
+        Button:
+            
+
+    GridLayout:
+        cols: 3
+        
+        Button:
+            background_color: C('#27dfd1')
+            text: '[size=40][/font]Test #1'
+
+        Button:
+            background_color: C('#cbd1d8')
+            text: '[size=40][/font]Test #2'
+
+        Button:
+            background_color: C('#cbd1d8')
+            text: '[size=40][/font]Test #3'
+
+        Button:
+            background_color: C('#cbd1d8')
+            text: '[size=40][/font]Test #4'
+        
+        Button:
+            background_color: C('#cbd1d8')
+            text: '[size=40][/font]Test #5'
+
+        Button:
+            background_color: C('#cbd1d8')
+            text: ' [size=40][/font]Test #6'
+
+    
+
+        

@@ -1,0 +1,95 @@
+#:import MeshLinePlot kivy.garden.graph.MeshLinePlot
+#:import C kivy.utils.get_color_from_hex
+
+#color wheel
+# off-white: #e8ebee
+# grey: #cbd1d8
+# blue: #27dfd1
+# white: #ffffff
+
+<Button>:
+    font_size: 24
+    halign: 'center'
+    valign: 'center'
+    markup: True
+    
+
+    
+Logic:
+    background_color: C('#e8ebee')
+    BoxLayout:
+        orientation: "horizontal"
+        
+
+        BoxLayout:
+            orientation: "vertical"
+            Button:
+                text: "Test 1"
+            Button:
+                text: "Test 2"
+            Button:
+                text: "Test 3"
+            Button:
+                text: "Test 4"
+
+
+
+
+
+        BoxLayout:
+            orientation: "vertical"
+
+        
+
+                    
+
+            BoxLayout:
+                size_hint: [1, .8]
+                Graph:
+                    label_options: {'color': (1,0,0,1)}
+                    id: graph
+                    xlabel: ""
+                    ylabel: "Level"
+            BoxLayout:
+                Slider:
+                    id: slider
+                    min: 0
+                    max: 100
+                    step: 1
+                    orientation: 'horizontal'
+
+                Label:
+                    text: str(slider.value)
+
+            BoxLayout:
+                size_hint: [1, .2]
+                orientation: "horizontal"
+                Button:
+                    background_color: C('#3498db')
+                    text: ('[font=Modern Pictograms][size=100]''h[/size][/font]\nStart')
+                    bold: True
+                    on_press: root.start()
+                Button:
+                    background_color: C('#e74c3c')
+                    text: '[font=Modern Pictograms][size=100]X[/size][/font]\nStop'
+                    bold: True
+                    on_press: root.stop()
+
+
+
+        BoxLayout:
+            orientation: "vertical"
+            Button:
+                text: "ECG"
+            Button:
+                text: "EDA"
+            Button:
+                text: "Spo2"
+            Button:
+                text: "Dyspnea"
+            Button:
+                text: "Cognitive Fatigue"
+            Button:
+                text: "Physical Fatigue"
+
+
